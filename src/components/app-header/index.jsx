@@ -34,7 +34,11 @@ const APPFotter = memo(() => {
             })}
           </ul>
         </HeaderLeft>
-        <HeaderRight>right</HeaderRight>
+        <HeaderRight>
+          <input type="text" className="sprite_01" placeholder="音乐/视频/电台/用户" />
+          <button>创作者中心</button>
+          <a href="">登录</a>
+        </HeaderRight>
       </div>
       <div className="divider"></div>
     </HeaderWrapper>

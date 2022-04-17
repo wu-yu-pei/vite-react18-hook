@@ -80,4 +80,35 @@ export const HeaderLeft = styled.div`
 
 export const HeaderRight = styled.div`
   height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  input {
+    box-sizing: border-box;
+    padding-left: 30px;
+    width: 158px;
+    height: 32px;
+    border-radius: 32px;
+    background-position: 0px -98px;
+    background-color: #fff;
+  }
+
+  button {
+    display: block;
+    border-radius: 32px;
+    border: 1px solid #4f4f4f;
+    padding: 8px 10px;
+    color: #ccc;
+    background-color: #242424;
+    :hover {
+      border: 1px solid #fff;
+    }
+  }
+
+  a {
+    :hover {
+      color: #fff;
+    }
+  }
 `;
