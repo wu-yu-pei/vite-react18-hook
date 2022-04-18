@@ -30,7 +30,6 @@ const App = memo(() => {
   return (
     <>
       <AppHeader></AppHeader>
-      {/* <GetRoutes /> */}
       {useRoutes(routes)}
       <AppFotter></AppFotter>
     </>
