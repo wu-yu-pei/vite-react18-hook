@@ -1,9 +1,7 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
 const Recommend = memo(() => {
-  return (
-    <div>推荐</div>
-  )
-})
+  return <div>推荐</div>;
+});
 
-export default Recommend
+export default Recommend;
