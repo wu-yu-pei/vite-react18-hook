@@ -73,6 +73,7 @@ import Mine from '@/pages/mine';
 const routes = [
   {
     path: '/',
+    // 重定向
     element: <Navigate to="/discover"></Navigate>,
   },
   {
@@ -80,31 +81,32 @@ const routes = [
     element: <Discover></Discover>,
     children: [
       {
-        path: '',
+        path: '/discover',
+        // 重定向
         element: <Navigate to="/discover/recommend"></Navigate>,
       },
       {
-        path: 'recommend',
+        path: '/discover/recommend',
         element: <Recommend></Recommend>,
       },
       {
-        path: 'ranking',
+        path: '/discover/ranking',
         element: <Ranking></Ranking>,
       },
       {
-        path: 'songs',
+        path: '/discover/songs',
         element: <Songs></Songs>,
       },
       {
-        path: 'djradio',
+        path: '/discover/djradio',
         element: <Djradio></Djradio>,
       },
       {
-        path: 'artist',
+        path: '/discover/artist',
         element: <Artist></Artist>,
       },
       {
-        path: 'album',
+        path: '/discover/album',
         element: <Ablum></Ablum>,
       },
     ],
