@@ -2,9 +2,9 @@ import * as actionTypes from './const';
 
 import { getTopBannerDate } from '@/services/recommend';
 
-export const changeTopBanerAction = (bannerDate) => ({
+export const changeTopBanerAction = (topBannerDate) => ({
   type: actionTypes.CHANGE_RECOMMEND_BANER,
-  banner: bannerDate,
+  topBanner: topBannerDate,
 });
 
 export const getTopBannerAction = () => {
