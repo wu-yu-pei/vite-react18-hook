@@ -1,12 +1,18 @@
 import React, { memo, useEffect } from 'react';
-import { RecommendWarpper } from './style';
+import { RecommendWarpper, RecommendContentWarpper } from './style';
 
 import TopBanner from './child-cop/top-banner';
+import Content from './child-cop/content';
+import Left from './child-cop/left';
 
 const Recommend = () => {
   return (
     <RecommendWarpper>
       <TopBanner></TopBanner>
+      <RecommendContentWarpper className="wrap-v2">
+        <Content></Content>
+        <Left></Left>
+      </RecommendContentWarpper>
     </RecommendWarpper>
   );
 };

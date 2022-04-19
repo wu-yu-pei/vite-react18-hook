@@ -21,6 +21,7 @@ export const BannerWarpper = styled.div`
         background-image: url(../../../../../src/assets/img/banner.png);
       }
     }
+    
     .left {
       span {
         background-position: 0px -360px;
