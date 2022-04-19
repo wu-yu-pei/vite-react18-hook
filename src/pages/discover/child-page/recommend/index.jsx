@@ -1,23 +1,14 @@
 import React, { memo, useEffect } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
+import { RecommendWarpper } from './style';
 
-import { getTopBannerAction } from './store/action-creater';
+import TopBanner from './child-cop/top-banner';
 
 const Recommend = () => {
-  const { banner } = useSelector(
-    (state) => ({
-      banner: state.recommend.get('topBanner'),
-    }),
-    shallowEqual
+  return (
+    <RecommendWarpper>
+      <TopBanner></TopBanner>
+    </RecommendWarpper>
   );
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getTopBannerAction());
-  }, []);
-
-  return <div>推荐{banner.length}</div>;
 };
 
 export default memo(Recommend);

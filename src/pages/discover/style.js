@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const DirecoverWrapper = styled.div`
-  height: 34px;
-  background-color: #c20c0c;
-
   .discover-top {
+    height: 34px;
+    background-color: #c20c0c;
     ul {
       display: flex;
-      margin-left: 195px;
+      margin-left: 407px;
       li {
         line-height: 34px;
         height: 100%;

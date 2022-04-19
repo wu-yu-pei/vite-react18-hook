@@ -5,7 +5,7 @@ import { dicoverMenu } from '@/common/local-data.js';
 const Discover = memo(() => {
   return (
     <DirecoverWrapper>
-      <div className="discover-top wrap-v1">
+      <div className="discover-top">
         <ul>
           {dicoverMenu.map((item, index) => {
             return (
