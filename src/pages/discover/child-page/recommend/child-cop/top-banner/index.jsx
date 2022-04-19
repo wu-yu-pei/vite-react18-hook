@@ -51,7 +51,9 @@ const TopBanner = memo(() => {
               })}
             </Carousel>
           </div>
-          <div className="center-right">B</div>
+          <div className="center-right">
+            <a href="https://music.163.com/download" className="download"></a>
+          </div>
         </div>
         <div className="right">
           <span onClick={(e) => carouselRef.current.next()}></span>

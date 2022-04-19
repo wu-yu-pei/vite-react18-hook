@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const BannerWarpper = styled.div`
   height: 283px;
-  background: url(${props => props.bgImg}) center center/9000px;
+  background: url(${(props) => props.bgImg}) center center/9000px;
 
   .wrap-v1 {
     display: flex;
@@ -55,6 +55,15 @@ export const BannerWarpper = styled.div`
       .center-right {
         width: 254px;
         height: 283px;
+        background-image: url(./../../../../src/assets/img/download.png);
+        .download {
+          display: block;
+          width: 215px;
+          height: 56px;
+          margin: 186px 0 0 19px;
+          background-position: 0 9999px;
+          text-indent: -9999px;
+        }
       }
     }
   }
