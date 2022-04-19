@@ -7,18 +7,16 @@ import { BannerWarpper } from './style';
 import { Carousel } from 'antd';
 
 const TopBanner = memo(() => {
-  console.log('render');
   // local state
   const carouselRef = createRef();
   const [currentBanner, setCurrentBanner] = useState(0);
 
   // reudx
-  const { banner } = useSelector(
-    (state) => ({
+  const { banner } = useSelector((state) => {
+    return {
       banner: state.recommend.get('topBanner'),
-    }),
-    shallowEqual
-  );
+    };
+  }, shallowEqual);
 
   const dispatch = useDispatch();
 
@@ -32,7 +30,7 @@ const TopBanner = memo(() => {
   });
 
   const bgImg = banner[currentBanner] && banner[currentBanner].imageUrl + '?imageView&blur=40x20';
-  console.log(bgImg);
+
   return (
     <BannerWarpper bgImg={bgImg}>
       <div className="wrap-v1">
