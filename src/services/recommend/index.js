@@ -5,3 +5,12 @@ export function getTopBannerDate() {
     url: '/banner',
   });
 }
+
+export function getHotRecommendDate(limit) {
+  return request({
+    url: '/personalized',
+    params: {
+      limit,
+    },
+  });
+}
