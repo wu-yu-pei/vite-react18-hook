@@ -1,5 +1,5 @@
 import React, { memo, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { getHotRecommendAction } from '../../../../store/action-creater';
 
@@ -17,7 +17,7 @@ const HotRecommend = memo(() => {
 
   const { hotRecommend } = useSelector((state) => ({
     hotRecommend: state.recommend.get('hotRecommend'),
-  }));
+  }), shallowEqual);
 
 
   return (

@@ -4,6 +4,7 @@ import { Map } from 'immutable';
 const initState = Map({
   topBanner: [],
   hotRecommend: [],
+  albums:[]
 });
 
 function reducer(state = initState, action) {
@@ -13,6 +14,9 @@ function reducer(state = initState, action) {
 
     case actionTypes.CHANGE_RECOMMEND_HOTRECOMMEND:
       return state.set('hotRecommend', action.hotRecommend);
+
+    case actionTypes.CHANGE_RECOMMEND_ALBUM:
+      return state.set('albums', action.albums);
 
     default:
       return state;

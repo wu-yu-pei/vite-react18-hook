@@ -11,7 +11,7 @@ const RecTitle = memo((props) => {
         <ul>
           {list.map((item, index) => {
             return (
-              <li>
+              <li key={index}>
                 <a href="#">{item}</a>
               </li>
             );

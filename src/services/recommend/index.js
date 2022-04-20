@@ -14,3 +14,13 @@ export function getHotRecommendDate(limit) {
     },
   });
 }
+
+
+export function getAlbumDate(limit) {
+  return request({
+    url: '/top/album',
+    params: {
+      limit,
+    },
+  });
+}
