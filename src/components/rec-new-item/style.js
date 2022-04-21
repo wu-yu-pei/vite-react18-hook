@@ -4,9 +4,9 @@ export const RecNewItemDiv = styled.div`
   width: 120px;
   height: 156px;
   img {
-    text-align: center;
     width: 100px;
     height: 100px;
+    margin: 0 auto;
   }
   p {
     margin: 5px;
