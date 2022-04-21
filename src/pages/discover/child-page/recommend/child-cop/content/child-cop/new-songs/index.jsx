@@ -12,7 +12,6 @@ const NewSongs = memo(() => {
   const CarouselRef = createRef();
 
   const { albums } = useSelector((state) => {
-    console.log(state.recommend);
     return {
       albums: state.recommend.get('albums'),
     };

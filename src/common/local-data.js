@@ -103,6 +103,35 @@ export const dicoverMenu = [
   },
 ];
 
+//入住歌手
+export const inSonger = [
+  {
+    imgUrl: 'http://p1.music.126.net/rCsLFXha6SLis0tV7yZ5fA==/109951165588539704.jpg?param=62y62',
+    one: '张惠妹aMEI',
+    two: '台湾歌手张惠妹',
+  },
+  {
+    imgUrl: 'http://p1.music.126.net/wDxCsT3YEYdNg-UZU_ZKeg==/109951166047225823.jpg?param=62y62',
+    one: 'Fine乐团',
+    two: '独立音乐人',
+  },
+  {
+    imgUrl: 'http://p1.music.126.net/TiRAIiIihOgtBgYB6DZRXA==/109951162916034289.jpg?param=62y62',
+    one: '萬曉利',
+    two: '民谣歌手、中国现代民谣的代表人物之一',
+  },
+  {
+    imgUrl: 'http://p1.music.126.net/w_UWOls2uCkFN_U62788Xg==/18806046882229308.jpg?param=62y62',
+    one: '音乐人赵雷',
+    two: '民谣歌手',
+  },
+  {
+    imgUrl: 'http://p1.music.126.net/mS2PtUF2F_x949tJHS5Kog==/109951166457235020.jpg?param=62y62',
+    one: '王三溥',
+    two: '音乐人',
+  },
+];
+
 // 热门主播
 export const hotRadios = [
   {

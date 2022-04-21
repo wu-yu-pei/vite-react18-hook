@@ -17,5 +17,9 @@ export const AsideDiv = styled.div`
     font-size: 12px;
     font-weight: 400;
     text-decoration-color: rgb(102, 102, 102);
+    a {
+      color: rgb(102, 102, 102);
+      cursor: pointer;
+    }
   }
 `;

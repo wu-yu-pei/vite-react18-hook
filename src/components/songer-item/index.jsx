@@ -3,6 +3,7 @@ import React, { memo } from 'react';
 import { SongerItemDiv } from './style';
 
 const SongerItem = memo((props) => {
+  console.log(11);
   const { imgUrl, one, two } = props;
   return (
     <SongerItemDiv>
