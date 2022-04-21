@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const RankItemDiv = styled.div`
-  width: 230px;
+  width: 229px;
   height: 560px;
   border: 1px solid #d3d3d3;
   .top {

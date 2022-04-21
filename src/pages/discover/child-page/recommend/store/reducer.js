@@ -4,7 +4,10 @@ import { Map } from 'immutable';
 const initState = Map({
   topBanner: [],
   hotRecommend: [],
-  albums:[]
+  albums: [],
+  biaosheng: [],
+  xinge: [],
+  yuanchang: [],
 });
 
 function reducer(state = initState, action) {
@@ -17,6 +20,15 @@ function reducer(state = initState, action) {
 
     case actionTypes.CHANGE_RECOMMEND_ALBUM:
       return state.set('albums', action.albums);
+
+    case actionTypes.CHANGE_RANKINGBIAOSHENG:
+      return state.set('biaosheng', action.biaosheng);
+
+    case actionTypes.CHANGE_RANKING_NEWSONGS:
+      return state.set('xinge', action.xinge);
+
+    case actionTypes.CHANGE_RANKING_YUANCHUANG:
+      return state.set('yuanchang', action.yuanchang);
 
     default:
       return state;

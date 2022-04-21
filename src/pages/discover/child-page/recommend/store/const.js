@@ -1,3 +1,7 @@
 export const CHANGE_RECOMMEND_BANER = 'recommend/CHANGE_BANER';
 export const CHANGE_RECOMMEND_HOTRECOMMEND = 'recommend/CHANGE_HOTRECOMMEND';
 export const CHANGE_RECOMMEND_ALBUM = 'recommend/CHANGE_ALBUM';
+
+export const CHANGE_RANKING_NEWSONGS = 'recommend/CHANGE_NEWSONGS'; // 新歌
+export const CHANGE_RANKINGBIAOSHENG = 'recommend/CHANGE_BIAOSHENG'; // 飙升
+export const CHANGE_RANKING_YUANCHUANG = 'recommend/CHANGE_YUANCHUANG'; // 原创

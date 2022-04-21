@@ -15,12 +15,20 @@ export function getHotRecommendDate(limit) {
   });
 }
 
-
 export function getAlbumDate(limit) {
   return request({
     url: '/top/album',
     params: {
       limit,
+    },
+  });
+}
+
+export function getTopList(idx) {
+  return request({
+    url: '/top/list',
+    params: {
+      idx,
     },
   });
 }
