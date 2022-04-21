@@ -32,7 +32,7 @@ const RankItem = memo((props) => {
           })
         }
         <li>
-          <a href={moreLink}>查看更多></a>
+          <a href={moreLink}>查看更多&gt;</a>
         </li>
       </ul>
     </RankItemDiv>
