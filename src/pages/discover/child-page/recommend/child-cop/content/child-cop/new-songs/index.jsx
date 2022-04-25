@@ -27,7 +27,7 @@ const NewSongs = memo(() => {
     <AlbumsWarpperDiv>
       <RecTitle title="新碟上架" href="http://baidu.com"></RecTitle>
       <div className="content">
-        <div className="left" onClick={e => CarouselRef.current.pre()}></div>
+        <div className="left" onClick={e => CarouselRef.current.prev()}></div>
         <div className="center">
           <Carousel autoplay dots={false} ref={CarouselRef}>
             {[0, 1].map((item, index) => {

@@ -1,13 +1,18 @@
 import React, { memo } from 'react';
 
 import RecAsideHeader from '@/components/rec-aside-header';
-import SongerItem from '@/components/songer-item';
+import RecLeftAonger from '@/components/rec-left-songer';
+
+import { hotRadios } from '../../../../../../../../common/local-data';
 
 const AsideHotSonger = memo(() => {
+  console.log(hotRadios);
   return (
     <div>
       <RecAsideHeader title="热门主播"></RecAsideHeader>
-      <SongerItem></SongerItem>
+      {hotRadios.map((item, index) => {
+        return <RecLeftAonger {...item} key={index}></RecLeftAonger>;
+      })}
     </div>
   );
 });
