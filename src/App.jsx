@@ -26,12 +26,15 @@ import routes from './router/index';
 import AppHeader from 'components/app-header';
 import AppFotter from 'components/app-fotter';
 
+import AppPlayerBar from './pages/player/app-playr-bar';
+
 const App = memo(() => {
   return (
     <>
       <AppHeader></AppHeader>
       {useRoutes(routes)}
       <AppFotter></AppFotter>
+      <AppPlayerBar></AppPlayerBar>
     </>
   );
 });

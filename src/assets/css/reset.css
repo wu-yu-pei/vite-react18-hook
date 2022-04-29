@@ -486,3 +486,8 @@ button {
   text-indent: -9999px;
   background: url(../img/sprite_cover.png) no-repeat -145px -57px;
 }
+/* body::-webkit-scrollbar {
+  background-color: #2474b5;
+  width: 0px;
+  height: 0px;
+} */
