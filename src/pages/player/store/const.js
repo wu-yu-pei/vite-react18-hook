@@ -1,1 +1,3 @@
 export const CHANGE_CURRENT_SONG = 'palyer/CHANGE_CURRENT_SONG'
+export const CHANGE_CURRENT_INDEX = 'palyer/CHANGE_CURRENT_INDEX'
+export const CHANGE_PLAY_LIST = 'palyer/CHANGE_PLAY_LIST'

@@ -29,6 +29,7 @@ const AppPlayerBar = memo(() => {
   }, [dispatch]);
 
   useEffect(() => {
+    setIsPlaying(false)
     audioRef.current.src = getPlaySong(currentSong.id);
   }, [currentSong]);
 
