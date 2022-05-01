@@ -59,13 +59,17 @@ const AppPlayerBar = memo(() => {
     setProgress(value);
     // 设置当前时间
     setCurrentTime(currentTime);
-  });
+  }, [dt]);
 
   const progressAfterChange = useCallback((value) => {
     // 设置音乐播放的位置
     audioRef.current.currentTime = ((value / 100) * dt) / 1000;
     setIsChanging(false);
-  });
+    if (!isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(!isPlaying)
+    }
+  },[isPlaying, dt]);
 
   return (
     <PlayerBarWarpper>

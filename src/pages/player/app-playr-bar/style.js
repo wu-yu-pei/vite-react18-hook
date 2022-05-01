@@ -101,7 +101,8 @@ export const CenterWarpper = styled.div`
             margin-top: -2px;
           }
           .ant-slider-track {
-            margin-top: -2px;
+            margin-top: -3px;
+            height: 8px;
             background-image: url(../../src/assets/img/statbar.png);
             background-position: 0 -67px;
           }
