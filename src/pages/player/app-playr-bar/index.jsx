@@ -1,10 +1,12 @@
 import React, { memo, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { PlayerBarWarpper, ControlWarpper, CenterWarpper, RightWarpper } from './style';
 import { Slider } from 'antd';
 
 import { getCurrentSongAction } from '../store/action-creater';
+
+import { getSize, formatMinuteSecond } from '@/utils/format-utils';
 
 const AppPlayerBar = memo(() => {
   const dispatch = useDispatch();
@@ -12,6 +14,17 @@ const AppPlayerBar = memo(() => {
   useEffect(() => {
     dispatch(getCurrentSongAction(167876));
   }, [dispatch]);
+
+  const { currentSong } = useSelector((state) => {
+    return {
+      currentSong: state.player.get('currentSong'),
+    };
+  });
+  const songName = currentSong && currentSong.name;
+  const songerName = currentSong && currentSong.ar && currentSong.ar[0].name;
+  const picUrl = currentSong && currentSong.al && currentSong.al.picUrl;
+  const dt = currentSong && currentSong.dt
+  console.log(currentSong);
 
   return (
     <PlayerBarWarpper>
@@ -23,16 +36,13 @@ const AppPlayerBar = memo(() => {
         </ControlWarpper>
         <CenterWarpper>
           <a href="#">
-            <img
-              src="http://p4.music.126.net/SEyHiif0UfP68pTEugkdRg==/109951166723691860.jpg?param=34y34"
-              alt=""
-            />
+            <img src={getSize(picUrl, 33)} alt="" />
           </a>
           <div className="info">
             <div className="info-top">
-              <a href="">独 守 烟 花 渐 凉</a>
+              <a href="">{songName}</a>
               <span>
-                <a href="">万古</a>/<a href="">万古呀</a>
+                <a href="">{songerName}</a>
               </span>
               <a href="">asdf</a>
             </div>
@@ -41,7 +51,7 @@ const AppPlayerBar = memo(() => {
                 <Slider></Slider>
               </div>
 
-              <div className="info-buttom-time">01:13/03:20</div>
+              <div className="info-buttom-time">00:00/{formatMinuteSecond(dt)}</div>
             </div>
           </div>
         </CenterWarpper>

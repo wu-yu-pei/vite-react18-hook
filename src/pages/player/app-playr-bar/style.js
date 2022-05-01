@@ -60,6 +60,7 @@ export const CenterWarpper = styled.div`
       width: 33px;
       height: 33px;
       transform: translate(-50%, -50%);
+      border-radius: 7px;
     }
   }
   .info {
