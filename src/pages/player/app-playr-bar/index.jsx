@@ -1,8 +1,18 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { PlayerBarWarpper, ControlWarpper, CenterWarpper, RightWarpper } from './style';
+import { Slider } from 'antd';
+
+import { getCurrentSongAction } from '../store/action-creater';
 
 const AppPlayerBar = memo(() => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentSongAction(167876));
+  }, [dispatch]);
+
   return (
     <PlayerBarWarpper>
       <div className="content wrap-v1">
@@ -27,7 +37,10 @@ const AppPlayerBar = memo(() => {
               <a href="">asdf</a>
             </div>
             <div className="info-buttom">
-              <div className="info-buttom-bar"></div>
+              <div className="info-buttom-bar">
+                <Slider></Slider>
+              </div>
+
               <div className="info-buttom-time">01:13/03:20</div>
             </div>
           </div>

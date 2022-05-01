@@ -9,7 +9,6 @@ export const PlayerBarWarpper = styled.div`
   z-index: 99999;
   visibility: visible;
   background: url(../../src/assets/img/playbar.png) 0 0 repeat-x;
-
   .content {
     display: flex;
     justify-content: space-between;
@@ -92,11 +91,28 @@ export const CenterWarpper = styled.div`
       height: 10px;
       .info-buttom-bar {
         width: 493px;
-        background-image: url(../../src/assets/img/statbar.png);
+
+        .ant-slider {
+          background-image: url(../../src/assets/img/statbar.png);
+          margin: -2px 0 0 0;
+          .ant-slider-rail {
+            background-color: transparent;
+            margin-top: -2px;
+          }
+          .ant-slider-track {
+            margin-top: -2px;
+            background-image: url(../../src/assets/img/statbar.png);
+            background-position: 0 -67px;
+          }
+          .ant-slider-handle {
+            margin-top: -7px;
+            border-color: #91272c;
+          }
+        }
       }
       .info-buttom-time {
         font-size: 10px;
-        margin: -5px 0 0 20px;
+        margin: -7px 0 0 20px;
       }
     }
   }
