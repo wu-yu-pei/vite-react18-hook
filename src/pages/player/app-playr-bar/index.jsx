@@ -10,7 +10,7 @@ import { getSize, formatMinuteSecond, getPlaySong } from '@/utils/format-utils';
 
 const AppPlayerBar = memo(() => {
   const audioRef = useRef();
-  const [currentTime, setCurrentTime] = useState(0);
+  const [currentTime, setCurrentTime] = useState();
   // reudx
   const dispatch = useDispatch();
 
@@ -44,6 +44,7 @@ const AppPlayerBar = memo(() => {
   function timeUpdate(e) {
     setCurrentTime(e.target.currentTime * 1000);
   }
+
   return (
     <PlayerBarWarpper>
       <div className="content wrap-v1">
@@ -66,7 +67,7 @@ const AppPlayerBar = memo(() => {
             </div>
             <div className="info-buttom">
               <div className="info-buttom-bar">
-                <Slider></Slider>
+                <Slider value={(currentTime / dt) * 100}></Slider>
               </div>
 
               <div className="info-buttom-time">
