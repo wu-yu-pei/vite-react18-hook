@@ -34,7 +34,7 @@ export const ControlWarpper = styled.div`
     :nth-child(2) {
       width: 36px;
       height: 36px;
-      background-position: 0 -204px;
+      background-position: 0 ${(props) => props.position};
     }
     :nth-child(3) {
       background-position: -80px -130px;

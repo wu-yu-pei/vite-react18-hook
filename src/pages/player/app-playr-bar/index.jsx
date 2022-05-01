@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { PlayerBarWarpper, ControlWarpper, CenterWarpper, RightWarpper } from './style';
-import { Slider } from 'antd';
+import { Affix, Slider } from 'antd';
 
 import { getCurrentSongAction } from '../store/action-creater';
 
@@ -11,21 +11,26 @@ import { getSize, formatMinuteSecond, getPlaySong } from '@/utils/format-utils';
 const AppPlayerBar = memo(() => {
   const [currentTime, setCurrentTime] = useState(0);
   const [Progress, setProgress] = useState(0);
-  const [isChanging, setIsChanging] = useState(false)
+  const [isChanging, setIsChanging] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   // reudx
   const dispatch = useDispatch();
   const audioRef = useRef();
-
-  useEffect(() => {
-    dispatch(getCurrentSongAction(167876));
-  }, [dispatch]);
 
   const { currentSong } = useSelector((state) => {
     return {
       currentSong: state.player.get('currentSong'),
     };
   });
+
+  useEffect(() => {
+    dispatch(getCurrentSongAction(167876));
+  }, [dispatch]);
+
+  useEffect(() => {
+    audioRef.current.src = getPlaySong(currentSong.id);
+  }, [currentSong]);
 
   const songName = currentSong && currentSong.name;
   const songerName = currentSong && currentSong.ar && currentSong.ar[0].name;
@@ -35,20 +40,20 @@ const AppPlayerBar = memo(() => {
 
   // play music
   function playMusic() {
-    audioRef.current.src = getPlaySong(currentSong.id);
-    audioRef.current.play();
+    // 这里有个细节 把设置数据放在后面
+    isPlaying ? audioRef.current.pause() : audioRef.current.play();
+    setIsPlaying(!isPlaying);
   }
-
   // on music paly
   function timeUpdate(e) {
-    if(isChanging) return
+    if (isChanging) return;
     setCurrentTime(e.target.currentTime * 1000);
-    setProgress(e.target.currentTime * 1000 / dt * 100);
+    setProgress(((e.target.currentTime * 1000) / dt) * 100);
   }
 
   // 或快滑动
   const progressChange = useCallback((value) => {
-    setIsChanging(true)
+    setIsChanging(true);
     const currentTime = (value / 100) * dt;
     // 设置进度
     setProgress(value);
@@ -58,14 +63,14 @@ const AppPlayerBar = memo(() => {
 
   const progressAfterChange = useCallback((value) => {
     // 设置音乐播放的位置
-    audioRef.current.currentTime = value / 100 * dt / 1000
-    setIsChanging(false)
+    audioRef.current.currentTime = ((value / 100) * dt) / 1000;
+    setIsChanging(false);
   });
 
   return (
     <PlayerBarWarpper>
       <div className="content wrap-v1">
-        <ControlWarpper>
+        <ControlWarpper position={isPlaying ? '-163px' : '-202px'}>
           <a href="javascript:;"></a>
           <a href="javascript:;" onClick={playMusic}></a>
           <a href="javascript:;"></a>
