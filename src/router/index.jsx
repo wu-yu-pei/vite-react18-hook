@@ -66,6 +66,7 @@ import Djradio from '@/pages/discover/child-page/djradio';
 import Ranking from '@/pages/discover/child-page/ranking';
 import Recommend from '@/pages/discover/child-page/recommend';
 import Songs from '@/pages/discover/child-page/songs';
+import PlayerSong from '@/pages/player/app-play-page';
 
 import Friend from '@/pages/friend';
 import Mine from '@/pages/mine';
@@ -108,6 +109,10 @@ const routes = [
       {
         path: '/discover/album',
         element: <Ablum></Ablum>,
+      },
+      {
+        path: '/discover/song',
+        element: <PlayerSong></PlayerSong>,
       },
     ],
   },
