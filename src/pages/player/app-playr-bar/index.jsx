@@ -2,7 +2,7 @@ import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { PlayerBarWarpper, ControlWarpper, CenterWarpper, RightWarpper } from './style';
-import { Affix, Slider } from 'antd';
+import { Slider } from 'antd';
 
 import { getCurrentSongAction, changePlayType, changePlayNext } from '../store/action-creater';
 
@@ -58,6 +58,11 @@ const AppPlayerBar = memo(() => {
     if (isChanging) return;
     setCurrentTime(e.target.currentTime * 1000);
     setProgress(((e.target.currentTime * 1000) / dt) * 100);
+  }
+
+  // on music play end
+  function endEd(e) {
+    dispatch(changePlayNext(1))
   }
 
   // change play type
@@ -148,7 +153,7 @@ const AppPlayerBar = memo(() => {
           </div>
         </RightWarpper>
       </div>
-      <audio ref={audioRef} onTimeUpdate={timeUpdate}></audio>
+      <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={endEd}></audio>
     </PlayerBarWarpper>
   );
 });
