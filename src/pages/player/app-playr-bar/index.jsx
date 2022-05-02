@@ -18,10 +18,11 @@ const AppPlayerBar = memo(() => {
   const dispatch = useDispatch();
   const audioRef = useRef();
 
-  let { currentSong, playType } = useSelector((state) => {
+  let { currentSong, playType, currentLyc } = useSelector((state) => {
     return {
       currentSong: state.player.get('currentSong'),
       playType: state.player.get('playType'),
+      currentLyc: state.player.get('currentLyc'),
     };
   });
 
@@ -56,8 +57,21 @@ const AppPlayerBar = memo(() => {
   // on music paly
   function timeUpdate(e) {
     if (isChanging) return;
-    setCurrentTime(e.target.currentTime * 1000);
-    setProgress(((e.target.currentTime * 1000) / dt) * 100);
+    const currentTime = e.target.currentTime * 1000;
+    setCurrentTime(currentTime);
+    setProgress((currentTime / dt) * 100);
+    currentTimeLrc(currentTime);
+  }
+
+  function currentTimeLrc(time) {
+    for (let i = currentLyc.length - 1; i >= 0; i--) {
+      if (currentLyc[i].time <= time) {
+        console.log(currentLyc[i].content);
+        document.querySelector('.lyric').innerHTML = ''
+        document.querySelector('.lyric').innerHTML = currentLyc[i].content
+        break;
+      }
+    }
   }
 
   // on music play end
@@ -160,6 +174,7 @@ const AppPlayerBar = memo(() => {
         </RightWarpper>
       </div>
       <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={endEd}></audio>
+      <div className="lyric"></div>
     </PlayerBarWarpper>
   );
 });
