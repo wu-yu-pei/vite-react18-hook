@@ -24,5 +24,10 @@ export function parseLyc(lyc) {
       lyrics.push({ time: totaltime, content });
     }
   }
+  
+  for(let i = 0; i < lyrics.length - 1; i++) {
+    let animateTime = lyrics[i+1].time - lyrics[i].time
+    lyrics[i].animateTime = animateTime
+  }
   return lyrics;
 }

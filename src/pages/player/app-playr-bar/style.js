@@ -31,6 +31,25 @@ export const PlayerBarWarpper = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    ::after {
+      position: absolute;
+      width: 267px;
+      height: 50px;
+      content:'';
+      left: -100%;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.6);
+      animation: move ${(props) => props.theTime}ms ease-in infinite;
+      animation-play-state: ${(props) => (props.isPlaying ? 'running' : 'paused')};
+    }
+  }
+  @keyframes move {
+    form {
+      left: -267px;
+    }
+    to {
+      left: 0;
+    }
   }
 `;
 

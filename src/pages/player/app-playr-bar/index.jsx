@@ -13,6 +13,7 @@ const AppPlayerBar = memo(() => {
   const [Progress, setProgress] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [theTime, setTheTime] = useState();
 
   // reudx
   const dispatch = useDispatch();
@@ -68,10 +69,12 @@ const AppPlayerBar = memo(() => {
       if (currentLyc[i].time <= time) {
         const lyric = currentLyc[i].content;
         const preLyric = document.querySelector('.lyric').innerHTML;
+        // 如果与上一次的歌词一样可以直接return
         if (lyric.trim() === preLyric.trim()) return;
-        console.log(lyric);
         document.querySelector('.lyric').innerHTML = '';
         document.querySelector('.lyric').innerHTML = currentLyc[i].content;
+
+        setTheTime(currentLyc[i].animateTime);
         break;
       }
     }
@@ -129,7 +132,7 @@ const AppPlayerBar = memo(() => {
   );
 
   return (
-    <PlayerBarWarpper>
+    <PlayerBarWarpper theTime={theTime} isPlaying={isPlaying}>
       <div className="content wrap-v1">
         <ControlWarpper position={isPlaying ? '-163px' : '-202px'}>
           <a href="javascript:;" onClick={() => handleNext(-1)}></a>
