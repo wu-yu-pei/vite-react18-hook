@@ -23,6 +23,42 @@ function changePlayList(playList) {
   };
 }
 
+export function changePlayType(playType) {
+  return {
+    type: actionType.CHANGE_PLAY_TYPE,
+    playType,
+  };
+}
+
+export function changePlayNext(tags) {
+  return (dispatch, getState) => {
+    const playType = getState().player.get('playType');
+    const playList = getState().player.get('playList');
+    let currentIndex = getState().player.get('currentIndex');
+    switch (playType) {
+      case 1: // 随机播放
+        let randomIndex = Math.floor(Math.random() * playList.length);
+        while (randomIndex === currentIndex) {
+          randomIndex = Math.floor(Math.random() * playList.length);
+        }
+        currentIndex = randomIndex;
+        break;
+      case 2: // 单曲循环
+      default:
+        currentIndex += tags;
+        if (currentIndex >= playList.length) {
+          currentIndex = 0;
+        }
+        if (currentIndex < 0) {
+          currentIndex = playList.length - 1;
+        }
+        break;
+    }
+    dispatch(changeCurrentIndex(currentIndex));
+    dispatch(changeCurrentSong(playList[currentIndex]));
+  };
+}
+
 export function getCurrentSongAction(ids) {
   return (dispatch, getState) => {
     const playList = getState().player.get('playList');
@@ -32,13 +68,13 @@ export function getCurrentSongAction(ids) {
       // 列表中有这首歌
       // 改变currentIndex
       dispatch(changeCurrentIndex(songIndex));
-      dispatch(changeCurrentSong(playList[songIndex]))
+      dispatch(changeCurrentSong(playList[songIndex]));
     } else {
       // 列表中没有这首歌
       getCurrentSong(ids).then((res) => {
         const newPlayList = [...playList];
         newPlayList.push(res.songs[0]);
-        dispatch(changePlayList(newPlayList))
+        dispatch(changePlayList(newPlayList));
         dispatch(changeCurrentIndex(newPlayList.length - 1));
         dispatch(changeCurrentSong(res.songs[0]));
       });

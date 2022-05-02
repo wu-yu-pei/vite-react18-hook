@@ -175,9 +175,31 @@ export const RightWarpper = styled.div`
       }
       :nth-child(2) {
         background: url(../../src/assets/img/playbar.png);
-        background-position: -3px -344px;
+        background-position: ${(props) => {
+          switch (props.playType) {
+            case 0:
+              return '-4px -344px';
+            case 1:
+              return '-65px -248px';
+            case 2:
+              return '-67px -344px';
+            default:
+              break;
+          }
+        }};
         :hover {
-          background-position: -33px -344px;
+          background-position: ${(props) => {
+            switch (props.playType) {
+              case 0:
+                return '-34px -344px';
+              case 1:
+                return '-92px -248px';
+              case 2:
+                return '-94px -344px';
+              default:
+                break;
+            }
+          }};
         }
       }
       :nth-child(3) {
