@@ -1,4 +1,5 @@
-import { getCurrentSong } from '@/services/player';
+import { getCurrentSong, getLyric } from '@/services/player';
+import { parseLyc } from '../../../utils/parse';
 
 import * as actionType from './const';
 
@@ -44,6 +45,8 @@ export function changePlayNext(tags) {
         currentIndex = randomIndex;
         break;
       case 2: // 单曲循环
+        // currentIndex = currentIndex;
+        break;
       default:
         currentIndex += tags;
         if (currentIndex >= playList.length) {
@@ -56,6 +59,24 @@ export function changePlayNext(tags) {
     }
     dispatch(changeCurrentIndex(currentIndex));
     dispatch(changeCurrentSong(playList[currentIndex]));
+    dispatch(getCurrentLycAction(playList[currentIndex].id));
+  };
+}
+
+export function changeCurrentLyc(lyric) {
+  return {
+    type: actionType.CHANGE_CURRENT_LYC,
+    currentLyc: lyric,
+  };
+}
+
+export function getCurrentLycAction(id) {
+  return (dispatch) => {
+    getLyric(id).then((res) => {
+      let lyc = res.lrc.lyric;
+      let parseLycs = parseLyc(lyc);
+      dispatch(changeCurrentLyc(parseLycs));
+    });
   };
 }
 
@@ -69,6 +90,7 @@ export function getCurrentSongAction(ids) {
       // 改变currentIndex
       dispatch(changeCurrentIndex(songIndex));
       dispatch(changeCurrentSong(playList[songIndex]));
+      dispatch(getCurrentLycAction(ids));
     } else {
       // 列表中没有这首歌
       getCurrentSong(ids).then((res) => {
@@ -77,6 +99,7 @@ export function getCurrentSongAction(ids) {
         dispatch(changePlayList(newPlayList));
         dispatch(changeCurrentIndex(newPlayList.length - 1));
         dispatch(changeCurrentSong(res.songs[0]));
+        dispatch(getCurrentLycAction(ids));
       });
     }
   };

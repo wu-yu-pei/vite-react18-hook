@@ -267,7 +267,8 @@ const defaultState = Map({
       publishTime: 1208188800000,
     },
   ],
-  playType: 0, // 0:单曲循环 1:随机播放 2:顺序播放
+  playType: 0, // 0:单曲循环 1:随机播放 2:顺序播放,
+  currentLyc: '',
 });
 
 export default function reducer(state = defaultState, actions) {
@@ -280,6 +281,8 @@ export default function reducer(state = defaultState, actions) {
       return state.set('playList', actions.playList);
     case actionType.CHANGE_PLAY_TYPE:
       return state.set('playType', actions.playType);
+    case actionType.CHANGE_CURRENT_LYC:
+      return state.set('currentLyc', actions.currentLyc);
     default:
       return state;
   }

@@ -62,7 +62,13 @@ const AppPlayerBar = memo(() => {
 
   // on music play end
   function endEd(e) {
-    dispatch(changePlayNext(1))
+    // 如果是单曲循环 直接把时间设置为0 继续播放
+    if (playType === 2) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    } else {
+      dispatch(changePlayNext(1));
+    }
   }
 
   // change play type
