@@ -21,13 +21,16 @@ export const PlayerBarWarpper = styled.div`
     left: 50%;
     bottom: 50px;
     transform: translateX(-50%);
-    width: 200px;
+    width: 267px;
     height: 50px;
     color: #fff;
     text-align: center;
     line-height: 50px;
     border-radius: 10px;
     background-color: rgb(115 182 237);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
 `;
 

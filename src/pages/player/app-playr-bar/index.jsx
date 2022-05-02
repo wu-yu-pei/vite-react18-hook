@@ -66,9 +66,12 @@ const AppPlayerBar = memo(() => {
   function currentTimeLrc(time) {
     for (let i = currentLyc.length - 1; i >= 0; i--) {
       if (currentLyc[i].time <= time) {
-        console.log(currentLyc[i].content);
-        document.querySelector('.lyric').innerHTML = ''
-        document.querySelector('.lyric').innerHTML = currentLyc[i].content
+        const lyric = currentLyc[i].content;
+        const preLyric = document.querySelector('.lyric').innerHTML;
+        if (lyric.trim() === preLyric.trim()) return;
+        console.log(lyric);
+        document.querySelector('.lyric').innerHTML = '';
+        document.querySelector('.lyric').innerHTML = currentLyc[i].content;
         break;
       }
     }
@@ -174,7 +177,7 @@ const AppPlayerBar = memo(() => {
         </RightWarpper>
       </div>
       <audio ref={audioRef} onTimeUpdate={timeUpdate} onEnded={endEd}></audio>
-      <div className="lyric"></div>
+      <div className="lyric">歌词区域</div>
     </PlayerBarWarpper>
   );
 });
