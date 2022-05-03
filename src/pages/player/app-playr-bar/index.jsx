@@ -8,6 +8,8 @@ import { getCurrentSongAction, changePlayType, changePlayNext } from '../store/a
 
 import { getSize, formatMinuteSecond, getPlaySong } from '@/utils/format-utils';
 
+import { message } from 'antd';
+
 const AppPlayerBar = memo(() => {
   const [currentTime, setCurrentTime] = useState(0);
   const [Progress, setProgress] = useState(0);
@@ -64,6 +66,13 @@ const AppPlayerBar = memo(() => {
     currentTimeLrc(currentTime);
   }
 
+  const info = (content) => {
+    message.info(content, {
+      duration: 0,
+      key: 'lyric',
+    });
+  };
+
   function currentTimeLrc(time) {
     for (let i = currentLyc.length - 1; i >= 0; i--) {
       if (currentLyc[i].time <= time) {
@@ -73,13 +82,19 @@ const AppPlayerBar = memo(() => {
         if (lyric.trim() === preLyric.trim()) return;
         document.querySelector('.lyric').innerHTML = '';
         document.querySelector('.lyric').innerHTML = currentLyc[i].content;
-
         setTheTime(currentLyc[i].animateTime);
         break;
       }
     }
-  }
 
+    // for (let i = 0; i < currentLyc.length; i++) {
+    //   if (time < currentLyc[i].time) {
+
+    //     info(currentLyc[i - 1].content);
+    //     break;
+    //   }
+    // }
+  }
   // on music play end
   function endEd(e) {
     // 如果是单曲循环 直接把时间设置为0 继续播放

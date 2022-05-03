@@ -21,24 +21,25 @@ export const PlayerBarWarpper = styled.div`
     left: 50%;
     bottom: 50px;
     transform: translateX(-50%);
-    width: 267px;
-    height: 50px;
-    color: #fff;
+    height: 35px;
+    color: #000;
     text-align: center;
-    line-height: 50px;
+    line-height: 35px;
     border-radius: 10px;
-    background-color: rgb(115 182 237);
+    background-color: #fff;
+    padding:  0 15px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     ::after {
       position: absolute;
-      width: 267px;
+      width: 100%;
       height: 50px;
       content:'';
       left: -100%;
       top: 0;
-      background-color: rgba(255, 255, 255, 0.6);
+      background-color: blue;
+      opacity: 0.3;
       animation: move ${(props) => props.theTime}ms ease-in infinite;
       animation-play-state: ${(props) => (props.isPlaying ? 'running' : 'paused')};
     }
